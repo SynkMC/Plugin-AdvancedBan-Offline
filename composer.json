@@ -1,0 +1,13 @@
+{
+    "name": "azuriom/advancedban",
+    "type": "azuriom-plugin",
+    "description": "Plugin for Azuriom",
+    "autoload": {
+        "psr-4": {
+            "Azuriom\\Plugin\\AdvancedBan\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    }
+}
