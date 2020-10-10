@@ -1,7 +1,8 @@
 {
     "name": "azuriom/advancedban",
     "type": "azuriom-plugin",
-    "description": "Plugin for Azuriom",
+    "description": "AdvancedBan plugin for Azuriom",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "Azuriom\\Plugin\\AdvancedBan\\": "src/"

@@ -2,44 +2,11 @@
 
 namespace Azuriom\Plugin\AdvancedBan\Providers;
 
+use Azuriom\Models\Permission;
 use Azuriom\Extensions\Plugin\BasePluginServiceProvider;
 
 class AdvancedBanServiceProvider extends BasePluginServiceProvider
 {
-    /**
-     * The plugin's global HTTP middleware stack.
-     *
-     * @var array
-     */
-    protected $middleware = [
-        // \Azuriom\Plugin\AdvancedBan\Middleware\ExampleMiddleware::class,
-    ];
-
-    /**
-     * The plugin's route middleware groups.
-     *
-     * @var array
-     */
-    protected $middlewareGroups = [];
-
-    /**
-     * The plugin's route middleware.
-     *
-     * @var array
-     */
-    protected $routeMiddleware = [
-        // 'example' => \Azuriom\Plugin\AdvancedBan\Middleware\ExampleRouteMiddleware::class,
-    ];
-
-    /**
-     * The policy mappings for this plugin.
-     *
-     * @var array
-     */
-    protected $policies = [
-        // User::class => UserPolicy::class,
-    ];
-
     /**
      * Register any plugin services.
      *
@@ -47,8 +14,6 @@ class AdvancedBanServiceProvider extends BasePluginServiceProvider
      */
     public function register()
     {
-        $this->registerMiddlewares();
-
         //
     }
 
@@ -71,9 +36,9 @@ class AdvancedBanServiceProvider extends BasePluginServiceProvider
 
         $this->registerAdminNavigation();
 
-        $this->registerUserNavigation();
-
-        //
+        Permission::registerPermissions([
+            'advancedban.admin' => 'advancedban::admin.permission',
+        ]);
     }
 
     /**
@@ -96,19 +61,12 @@ class AdvancedBanServiceProvider extends BasePluginServiceProvider
     protected function adminNavigation()
     {
         return [
-            //
-        ];
-    }
-
-    /**
-     * Return the user navigations routes to register in the user menu.
-     *
-     * @return array
-     */
-    protected function userNavigation()
-    {
-        return [
-            //
+            'advancedban' => [
+            	'name' => 'advancedban::admin.nav.title',
+            	'icon' => 'fas fa-hammer',
+            	'route' => 'advancedban.admin.settings',
+            	'permission' => 'advancedban.admin'
+            ],
         ];
     }
 }

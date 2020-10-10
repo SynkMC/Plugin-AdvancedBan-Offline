@@ -17,11 +17,11 @@ class AdvancedBanHomeController extends Controller
 		if(config()->get('database.connections.advancedban') === NULL) {
 	        config()->set('database.connections.advancedban', [
 	            'driver'    => 'mysql',
-	            'host'      => '127.0.0.1',
-	            'port'      => '3306',
-	            'database'  => 'advancedban',
-	            'username'  => 'root',
-	            'password'  => 'monMotDePasseSécurisé',
+	            'host'      => setting('advancedban.host', '127.0.0.1'),
+	            'port'      => setting('advancedban.port', '3306'),
+	            'database'  => setting('advancedban.database', 'advancedban'),
+	            'username'  => setting('advancedban.username', 'advancedban'),
+	            'password'  => setting('advancedban.password'),
 	            'charset'   => 'utf8',
 	            'collation' => 'utf8_unicode_ci',
 	            'prefix'    => '',

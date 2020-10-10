@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'AdvancedBan')
+@section('title', trans('advancedban::messages.title'))
 
 @section('content')
     <div class="container">

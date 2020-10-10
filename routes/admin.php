@@ -4,14 +4,16 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Admin Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your plugin. These
-| routes are loaded by the RouteServiceProvider of your plugin within
-| a group which contains the "web" middleware group and your plugin name
-| as prefix. Now create something great!
+| Here is where you can register admin routes for your plugin. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" and "admin" middleware groups. Now create a great admin panel !
 |
 */
 
-Route::get('/', 'AdminController@index');
+Route::middleware('can:advancedban.admin')->group(function () {
+    Route::get('/settings', 'SettingController@show')->name('settings');
+    Route::post('/settings', 'SettingController@save')->name('settings.save');
+});
