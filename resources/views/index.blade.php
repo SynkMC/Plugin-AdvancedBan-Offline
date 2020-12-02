@@ -3,18 +3,20 @@
 @section('title', trans('advancedban::messages.title'))
 
 @section('content')
-    <div class="container">
-		<div class="table-wrapper">
+    <div class="container content">
+    	<h1>{{ trans('advancedban::messages.title') }}</h1>
+
+		<div class="table-wrapper table-responsive">
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th scope="col">Type</th>
-						<th scope="col">Pseudo</th>
-						<th scope="col">Raison</th>
-						<th scope="col">Staff</th>
-						<th scope="col">Date</th>
-						<th scope="col">Expiration</th>
-						<th scope="col" class="text-right">Status</th>
+						<th scope="col">{{ trans('messages.fields.type') }}</th>
+						<th scope="col">{{ trans('advancedban::messages.username') }}</th>
+						<th scope="col">{{ trans('advancedban::messages.reason') }}</th>
+						<th scope="col">{{ trans('advancedban::messages.staff') }}</th>
+						<th scope="col">{{ trans('messages.fields.date') }}</th>
+						<th scope="col">{{ trans('advancedban::messages.expires_at') }}</th>
+						<th scope="col" class="text-right">{{ trans('messages.fields.status') }}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -37,21 +39,15 @@
 							</td>
 							<td class="text-right">
 								@if(in_array($punishment, $Punishments) && $punishment->end < time())
-									Actif
+									{{ trans('advancedban::messages.active') }}
 								@else
-									Terminé
+									{{ trans('advancedban::messages.finished') }}
 								@endif
 							</td>
 						</tr>
 					@empty
 						<tr>
-							<td>-</td>
-							<td>Il n'y a aucune sanction.</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							<td>-</td>
-							<td class="text-right">-</td>
+							<td colspan="7">{{ trans('advancedban::messages.no_punishments_found') }}</td>
 						</tr>
 					@endforelse
 				</tbody>
