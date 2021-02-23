@@ -17,5 +17,6 @@ return [
 		'database' => 'Base de données',
 		'username' => 'Nom d\'utilisateur',
 		'password' => 'Mot de passe',
+		'perPage' => 'Enregistrements par page',
 	],
 ];

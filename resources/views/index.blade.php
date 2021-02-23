@@ -4,7 +4,29 @@
 
 @section('content')
     <div class="container content">
-    	<h1>{{ trans('advancedban::messages.title') }}</h1>
+    	<div class="row">
+	    	<div class="col">
+	    		<h1>{{ trans('advancedban::messages.title') }}</h1>
+	    	</div>
+
+	    	<div class="col">
+			    <form class="form-inline mb-3 float-right" action="{{ route('advancedban.index') }}" method="GET">
+			        <div class="form-group mb-2">
+			            <label for="searchInput" class="sr-only">{{ trans('messages.actions.search') }}</label>
+
+			            <div class="input-group">
+			                <input type="text" class="form-control" id="searchInput" name="q" value="{{ request()->input('q') }}" placeholder="{{ trans('messages.actions.search') }}">
+
+			                <div class="input-group-append">
+			                    <button type="submit" class="btn btn-primary">
+			                        <i class="fas fa-search fa-sm"></i>
+			                    </button>
+			                </div>
+			            </div>
+			        </div>
+			    </form>
+			</div>
+		</div>
 
 		<div class="table-wrapper table-responsive">
 			<table class="table table-striped table-hover">
@@ -50,6 +72,8 @@
 					@endforelse
 				</tbody>
 			</table>
+
+			{{ $allPunishments->links() }}
 		</div>
 	</div>
 @endsection

@@ -1,14 +1,11 @@
 {
     "name": "azuriom/advancedban",
     "type": "azuriom-plugin",
-    "description": "AdvancedBan plugin for Azuriom",
+    "description": "An AdvancedBan plugin to view your punishments from your Azuriom website!",
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Azuriom\\Plugin\\AdvancedBan\\": "src/"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     }
 }

@@ -31,7 +31,12 @@
                 
                 <div class="form-group">
                     <label for="password">{{ trans('advancedban::admin.settings.password') }}</label>
-                    <input class="form-control" id="password" name="password" value="{{ $password }}" required="required">
+                    <input type="password" class="form-control" id="password" name="password" value="{{ $password }}" required="required">
+                </div>
+
+                <div class="form-group">
+                    <label for="perPage">{{ trans('advancedban::admin.settings.perPage') }}</label>
+                    <input type="number" min="1" max="100" class="form-control" id="perPage" name="perPage" value="{{ $perPage }}" required="required">
                 </div>
 
                 <button type="submit" class="btn btn-primary">
