@@ -25,9 +25,9 @@
 						))) as $punishment)
 						<tr class="text-nowrap">
 							<td>{{ $punishment->punishmentType }}</td>
-							<td><img src="https://crafatar.com/avatars/{{ $punishment->uuid }}?size=30&default=MHF_Steve"> {{ $punishment->name }}</td>
+							<td><img src="https://crafthead.net/avatar/{{ $punishment->uuid }}/30"> {{ $punishment->name }}</td>
 							<td>{{ $punishment->reason }}</td>
-							<td><img data-name="{{ $punishment->operator }}" src="https://crafatar.com/avatars/8667ba71-b85a-4004-af54-457a9734eed7?size=30"> {{ $punishment->operator }}</td>
+							<td><img data-name="{{ $punishment->operator }}" src="https://crafthead.net/avatar/8667ba71-b85a-4004-af54-457a9734eed7/30"> {{ $punishment->operator }}</td>
 							<td>{{ format_date(Carbon\Carbon::createFromTimestampMs($punishment->start)) }} <span class="badge badge-info">{{ strftime('%H:%M', $punishment->start / 1000) }}</span></td>
 							<td>
 								@if($punishment->end != -1)
@@ -63,25 +63,10 @@
 			var linksArr = Array.from(links);
 
 			linksArr.forEach(function(element) {
-				let profile = element;
-				if(profile.getAttribute('data-name') === null) return;
+				let name = element.getAttribute('data-name');
+				if(name === null) return;
 
-				var request = new XMLHttpRequest();
-				request.open('GET', 'https://api.minetools.eu/uuid/' + profile.getAttribute('data-name').replace(new RegExp("[.]", "g"), "_"), true);
-
-				request.onreadystatechange = function() {
-				  if (this.readyState === 4) {
-				    if (this.status >= 200 && this.status < 400) {
-				      // Success!
-				      var data = JSON.parse(this.responseText);
-
-				      if(data.id.length > 4) profile.setAttribute('src', 'https://crafatar.com/avatars/' + data.id + '?size=30');
-				    }
-				  }
-				};
-
-				request.send();
-				request = null;
+				profile.setAttribute('src', 'https://crafthead.net/avatar/' + name + '/30');
 			});
 		})
 	</script>
