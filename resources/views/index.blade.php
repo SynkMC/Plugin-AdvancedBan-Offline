@@ -20,9 +20,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@forelse(array_map('json_decode', array_unique(array_map('json_encode',
-						array_merge($PunishmentHistory, $Punishments)
-						))) as $punishment)
+					@forelse($allPunishments as $punishment)
 						<tr class="text-nowrap">
 							<td>{{ $punishment->punishmentType }}</td>
 							<td><img src="https://crafthead.net/avatar/{{ $punishment->uuid }}/30"> {{ $punishment->name }}</td>
@@ -38,7 +36,7 @@
 								@endif
 							</td>
 							<td class="text-right">
-								@if(in_array($punishment, $Punishments) && $punishment->end < time())
+								@if(in_array($punishment, $punishments) && time() < $punishment->end)
 									{{ trans('advancedban::messages.active') }}
 								@else
 									{{ trans('advancedban::messages.finished') }}
@@ -66,7 +64,7 @@
 				let name = element.getAttribute('data-name');
 				if(name === null) return;
 
-				profile.setAttribute('src', 'https://crafthead.net/avatar/' + name + '/30');
+				element.setAttribute('src', 'https://crafthead.net/avatar/' + name + '/30');
 			});
 		})
 	</script>

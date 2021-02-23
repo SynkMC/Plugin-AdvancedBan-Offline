@@ -26,21 +26,21 @@ class SettingController extends Controller
 
     public function save(Request $request)
     {
-        Setting::updateSettings('advancedban.host', $this->validate($request, [
+        $data = $this->validate($request, [
             'host' => ['required', 'string', 'max:255'],
-        ])['host']);
-        Setting::updateSettings('advancedban.port', $this->validate($request, [
             'port' => ['required', 'integer', 'between:1,65535'],
-        ])['port']);
-        Setting::updateSettings('advancedban.database', $this->validate($request, [
             'database' => ['required', 'string', 'max:255'],
-        ])['database']);
-        Setting::updateSettings('advancedban.username', $this->validate($request, [
             'username' => ['required', 'string', 'max:255'],
-        ])['username']);
-        Setting::updateSettings('advancedban.password', $this->validate($request, [
             'password' => ['required', 'string', 'max:255'],
-        ])['password']);
+        ]);
+
+        Setting::updateSettings([
+            'advancedban.host' => $request->input('host'),
+            'advancedban.port' => $request->input('port'),
+            'advancedban.database' => $request->input('database'),
+            'advancedban.username' => $request->input('username'),
+            'advancedban.password' => $request->input('password'),
+        ]);
 
         return redirect()->route('advancedban.admin.settings')->with('success', trans('admin.settings.status.updated'));
     }

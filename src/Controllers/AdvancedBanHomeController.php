@@ -14,7 +14,9 @@ class AdvancedBanHomeController extends Controller
      */
     public function index()
     {
-		if(config()->get('database.connections.advancedban') === NULL) {
+		if (config()->get('database.connections.advancedban') === null) {
+			abort_if(setting('advancedban.host') === null, 404);
+
 	        config()->set('database.connections.advancedban', [
 	            'driver'    => 'mysql',
 	            'host'      => setting('advancedban.host', '127.0.0.1'),
@@ -29,9 +31,10 @@ class AdvancedBanHomeController extends Controller
 	        ]);
 	    }
 
-	    $punishmentHistory = DB::connection('advancedban')->select('SELECT * FROM PunishmentHistory ORDER BY start DESC');
-	    $punishments = DB::connection('advancedban')->select('SELECT * FROM Punishments ORDER BY start DESC');
+	    $punishmentHistory = DB::connection('advancedban')->select('SELECT * FROM punishmenthistory ORDER BY start DESC');
+	    $punishments = DB::connection('advancedban')->select('SELECT * FROM punishments ORDER BY start DESC');
+	    $allPunishments = collect(array_merge($punishmentHistory, $punishments))->unique();
 
-        return view('advancedban::index', ['PunishmentHistory' => $punishmentHistory, 'Punishments' => $punishments]);
+        return view('advancedban::index', ['punishments' => $punishments, 'punishmentHistory' => $punishmentHistory, 'allPunishments' => $allPunishments]);
     }
 }
