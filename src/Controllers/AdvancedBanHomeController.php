@@ -6,7 +6,7 @@ use Azuriom\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
-use Illuminate\Support\DB;
+use Illuminate\Support\Facades\DB;
 
 class AdvancedBanHomeController extends Controller
 {
