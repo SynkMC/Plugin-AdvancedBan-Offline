@@ -36,8 +36,8 @@ class AdvancedBanHomeController extends Controller
 
 	    $query = strtolower($request->input('q'));
 
-	    $punishmentHistory = DB::connection('advancedban')->select('SELECT * FROM punishmenthistory ORDER BY start DESC');
-	    $punishments = DB::connection('advancedban')->select('SELECT * FROM punishments ORDER BY start DESC');
+	    $punishmentHistory = DB::connection('advancedban')->select('SELECT * FROM ' + setting('advancedban.historyTable', 'PunishmentHistory') + ' ORDER BY start DESC');
+	    $punishments = DB::connection('advancedban')->select('SELECT * FROM ' + setting('advancedban.punishmentTable', 'Punishments') + ' ORDER BY start DESC');
 	    
 	    $allPunishments = collect(array_merge($punishmentHistory, $punishments))->unique();
 

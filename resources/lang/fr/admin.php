@@ -18,5 +18,7 @@ return [
 		'username' => 'Nom d\'utilisateur',
 		'password' => 'Mot de passe',
 		'perPage' => 'Enregistrements par page',
+		'historyTable' => 'Table de l\'historique',
+		'punishmentTable' => 'Table des sanctions',
 	],
 ];

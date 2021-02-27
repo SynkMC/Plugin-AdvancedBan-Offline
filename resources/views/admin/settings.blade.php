@@ -39,6 +39,16 @@
                     <input type="number" min="1" max="100" class="form-control" id="perPage" name="perPage" value="{{ $perPage }}" required="required">
                 </div>
 
+                <div class="form-group">
+                    <label for="historyTable">{{ trans('advancedban::admin.settings.historyTable') }}</label>
+                    <input type="text" class="form-control" id="historyTable" name="historyTable" value="{{ $historyTable }}" required="required">
+                </div>
+
+                <div class="form-group">
+                    <label for="punishmentTable">{{ trans('advancedban::admin.settings.punishmentTable') }}</label>
+                    <input type="text" class="form-control" id="punishmentTable" name="punishmentTable" value="{{ $punishmentTable }}" required="required">
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-save"></i> {{ trans('messages.actions.save') }}
                 </button>

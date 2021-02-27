@@ -18,5 +18,7 @@ return [
 		'username' => 'Username',
 		'password' => 'Password',
 		'perPage' => 'Records per page',
+		'historyTable' => 'History Table',
+		'punishmentTable' => 'Punishment Table',
 	],
 ];

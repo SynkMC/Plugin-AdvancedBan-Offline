@@ -22,6 +22,8 @@ class SettingController extends Controller
             'username' => setting('advancedban.username', 'advancedban'),
             'password' => setting('advancedban.password'),
             'perPage' => setting('advancedban.perPage', 10),
+            'historyTable' => setting('advancedban.historyTable', 'PunishmentHistory'),
+            'punishmentTable' => setting('advancedban.punishmentTable', 'Punishments'),
         ]);
     }
 
@@ -34,6 +36,8 @@ class SettingController extends Controller
             'username' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'max:255'],
             'perPage' => ['required', 'integer', 'between:1,100'],
+            'historyTable' => ['required', 'string', 'between:1,100'],
+            'punishmentTable' => ['required', 'string', 'between:1,100'],
         ]);
 
         Setting::updateSettings([
@@ -43,6 +47,8 @@ class SettingController extends Controller
             'advancedban.username' => $request->input('username'),
             'advancedban.password' => $request->input('password'),
             'advancedban.perPage' => $request->input('perPage'),
+            'advancedban.historyTable' => $request->input('historyTable'),
+            'advancedban.punishmentTable' => $request->input('punishmentTable'),
         ]);
 
         return redirect()->route('advancedban.admin.settings')->with('success', trans('admin.settings.status.updated'));
