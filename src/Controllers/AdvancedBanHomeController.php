@@ -17,6 +17,8 @@ class AdvancedBanHomeController extends Controller
      */
     public function index(Request $request)
     {
+        $this->authorize('advancedban.view');
+
         if (config()->get('database.connections.advancedban') === null) {
             abort_if(setting('advancedban.host') === null, 404);
 

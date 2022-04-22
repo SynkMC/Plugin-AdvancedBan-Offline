@@ -37,7 +37,8 @@ class AdvancedBanServiceProvider extends BasePluginServiceProvider
         $this->registerAdminNavigation();
 
         Permission::registerPermissions([
-            'advancedban.admin' => 'advancedban::admin.permission',
+            'advancedban.admin' => 'advancedban::admin.permissions.admin',
+            'advancedban.view' => 'advancedban::admin.permissions.view',
         ]);
     }
 
