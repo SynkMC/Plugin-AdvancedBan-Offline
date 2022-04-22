@@ -23,5 +23,6 @@ return [
 		'perPage' => 'Enregistrements par page',
 		'historyTable' => 'Table de l\'historique',
 		'punishmentTable' => 'Table des sanctions',
+		'route' => 'Chemin',
 	],
 ];

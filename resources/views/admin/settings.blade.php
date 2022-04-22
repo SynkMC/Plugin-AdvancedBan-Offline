@@ -49,6 +49,11 @@
                     <input type="text" class="form-control" id="punishmentTable" name="punishmentTable" value="{{ $punishmentTable }}" required="required">
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label" for="route">{{ trans('advancedban::admin.settings.route') }}</label>
+                    <input type="text" class="form-control" id="route" name="route" value="{{ $route }}" required="required">
+                </div>
+
                 <button type="submit" class="btn btn-primary">
                     <i class="bi bi-save"></i> {{ trans('messages.actions.save') }}
                 </button>

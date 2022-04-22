@@ -30,7 +30,7 @@ class RouteServiceProvider extends BaseRouteServiceProvider
 
     protected function mapPluginsRoutes()
     {
-        Route::prefix($this->plugin->id)
+        Route::prefix(setting('advancedban.route', $this->plugin->id))
             ->middleware('web')
             ->namespace($this->namespace)
             ->name("{$this->plugin->id}.")

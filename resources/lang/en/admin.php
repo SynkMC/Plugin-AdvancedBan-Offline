@@ -23,5 +23,6 @@ return [
 		'perPage' => 'Records per page',
 		'historyTable' => 'History Table',
 		'punishmentTable' => 'Punishment Table',
+		'route' => 'Route',
 	],
 ];

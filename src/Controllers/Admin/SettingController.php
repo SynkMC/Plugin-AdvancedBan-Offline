@@ -24,6 +24,7 @@ class SettingController extends Controller
             'perPage' => setting('advancedban.perPage', 10),
             'historyTable' => setting('advancedban.historyTable', 'PunishmentHistory'),
             'punishmentTable' => setting('advancedban.punishmentTable', 'Punishments'),
+            'route' => setting('advancedban.route', 'advancedban'),
         ]);
     }
 
@@ -38,6 +39,7 @@ class SettingController extends Controller
             'perPage' => ['required', 'integer', 'between:1,100'],
             'historyTable' => ['required', 'string', 'between:1,100'],
             'punishmentTable' => ['required', 'string', 'between:1,100'],
+            'route' => ['required', 'string', 'between:1,100'],
         ]);
 
         Setting::updateSettings([
@@ -49,6 +51,7 @@ class SettingController extends Controller
             'advancedban.perPage' => $request->input('perPage'),
             'advancedban.historyTable' => $request->input('historyTable'),
             'advancedban.punishmentTable' => $request->input('punishmentTable'),
+            'advancedban.route' => $request->input('route'),
         ]);
 
         return redirect()->route('advancedban.admin.settings')->with('success', trans('admin.settings.updated'));
