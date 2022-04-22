@@ -49,7 +49,7 @@ class AdvancedBanServiceProvider extends BasePluginServiceProvider
     protected function routeDescriptions()
     {
         return [
-            'advancedban.index' => 'advancedban::messages.title',
+            'advancedban.index' => trans('advancedban::messages.title'),
         ];
     }
 
@@ -62,8 +62,8 @@ class AdvancedBanServiceProvider extends BasePluginServiceProvider
     {
         return [
             'advancedban' => [
-            	'name' => 'advancedban::admin.nav.title',
-            	'icon' => 'fas fa-hammer',
+            	'name' => trans('advancedban::admin.nav.title'),
+            	'icon' => 'bi bi-hammer',
             	'route' => 'advancedban.admin.settings',
             	'permission' => 'advancedban.admin'
             ],

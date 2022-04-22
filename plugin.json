@@ -2,11 +2,12 @@
     "id": "advancedban",
     "name": "AdvancedBan",
     "description": "An AdvancedBan plugin to view your punishments from your Azuriom website!",
-    "version": "1.0.7",
+    "version": "2.0.0",
     "url": "https://azuriom.com/market/resources/26",
     "authors": [
-        "ZeProf2Coding"
+        "Arnaud Lier"
     ],
+    "azuriom_api": "1.0.0",
     "providers": [
         "\\Azuriom\\Plugin\\AdvancedBan\\Providers\\AdvancedBanServiceProvider",
         "\\Azuriom\\Plugin\\AdvancedBan\\Providers\\RouteServiceProvider"

@@ -10,18 +10,16 @@
 	    	</div>
 
 	    	<div class="col">
-			    <form class="form-inline mb-3 float-right" action="{{ route('advancedban.index') }}" method="GET">
-			        <div class="form-group mb-2">
-			            <label for="searchInput" class="sr-only">{{ trans('messages.actions.search') }}</label>
+			    <form class="mb-3 float-right" action="{{ route('advancedban.index') }}" method="GET">
+			        <div class="mb-2">
+			            <label for="searchInput" class="form-label sr-only">{{ trans('messages.actions.search') }}</label>
 
 			            <div class="input-group">
 			                <input type="text" class="form-control" id="searchInput" name="q" value="{{ request()->input('q') }}" placeholder="{{ trans('messages.actions.search') }}">
 
-			                <div class="input-group-append">
-			                    <button type="submit" class="btn btn-primary">
-			                        <i class="fas fa-search fa-sm"></i>
-			                    </button>
-			                </div>
+				            <button type="submit" class="btn btn-primary">
+				                <i class="bi bi-search fa-sm"></i>
+				            </button>
 			            </div>
 			        </div>
 			    </form>
@@ -42,7 +40,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					@forelse($allPunishments as $punishment)
+					@forelse ($allPunishments as $punishment)
 						<tr class="text-nowrap">
 							<td>{{ $punishment->punishmentType }}</td>
 							<td><img src="https://crafthead.net/avatar/{{ $punishment->uuid }}/30"> {{ $punishment->name }}</td>
@@ -50,7 +48,7 @@
 							<td><img data-name="{{ $punishment->operator }}" src="https://crafthead.net/avatar/8667ba71-b85a-4004-af54-457a9734eed7/30"> {{ $punishment->operator }}</td>
 							<td>{{ format_date(Carbon\Carbon::createFromTimestampMs($punishment->start)) }} <span class="badge badge-info">{{ strftime('%H:%M', $punishment->start / 1000) }}</span></td>
 							<td>
-								@if($punishment->end != -1)
+								@if ($punishment->end != -1)
 									{{ format_date(Carbon\Carbon::createFromTimestampMs($punishment->end)) }}
 									<span class="badge badge-info">{{ strftime('%H:%M', $punishment->end / 1000) }}</span>
 								@else
@@ -58,7 +56,7 @@
 								@endif
 							</td>
 							<td class="text-right">
-								@if(in_array($punishment, $punishments) && time() < $punishment->end)
+								@if (in_array($punishment, $punishments) && time() < $punishment->end)
 									{{ trans('advancedban::messages.active') }}
 								@else
 									{{ trans('advancedban::messages.finished') }}
@@ -86,7 +84,7 @@
 
 			linksArr.forEach(function(element) {
 				let name = element.getAttribute('data-name');
-				if(name === null) return;
+				if (name === null) return;
 
 				element.setAttribute('src', 'https://crafthead.net/avatar/' + name + '/30');
 			});

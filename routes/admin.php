@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Azuriom\Plugin\AdvancedBan\Controllers\Admin\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('can:advancedban.admin')->group(function () {
-    Route::get('/settings', 'SettingController@show')->name('settings');
-    Route::post('/settings', 'SettingController@save')->name('settings.save');
+    Route::get('/settings', [SettingController::class, 'show'])->name('settings');
+    Route::post('/settings', [SettingController::class, 'save'])->name('settings.save');
 });

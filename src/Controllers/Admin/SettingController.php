@@ -51,6 +51,6 @@ class SettingController extends Controller
             'advancedban.punishmentTable' => $request->input('punishmentTable'),
         ]);
 
-        return redirect()->route('advancedban.admin.settings')->with('success', trans('admin.settings.status.updated'));
+        return redirect()->route('advancedban.admin.settings')->with('success', trans('admin.settings.updated'));
     }
 }
