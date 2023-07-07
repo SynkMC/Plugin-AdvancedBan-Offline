@@ -62,7 +62,7 @@
                                 @endif
                             </td>
                             <td class="text-end">
-                                @if ($punishments->contains($punishment) && time() > $punishment->end / 1000)
+                                @if ($punishments->contains($punishment) && time() < $punishment->end / 1000)
                                     {{ trans('advancedban::messages.active') }}
                                 @else
                                     {{ trans('advancedban::messages.finished') }}
