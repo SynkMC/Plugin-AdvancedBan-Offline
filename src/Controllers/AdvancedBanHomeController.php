@@ -46,15 +46,6 @@ class AdvancedBanHomeController extends Controller
             ->orWhere('punishmentType', 'LIKE', "%{$query}%")
             ->orderByDesc('start')
             ->get();
-        $punishments = DB::connection('advancedban')
-            ->table(setting('advancedban.punishmentTable', 'Punishments'))
-            ->where('name', 'LIKE', "%{$query}%")
-            ->orWhere('reason', 'LIKE', "%{$query}%")
-            ->orWhere('operator', 'LIKE', "%{$query}%")
-            ->orWhere('punishmentType', 'LIKE', "%{$query}%")
-            ->orderByDesc('start')
-            ->get();
-
         $allPunishments = $punishmentHistory->merge($punishments)->unique();
 
         $currentPage = LengthAwarePaginator::resolveCurrentPage();

@@ -45,11 +45,11 @@
                     @forelse ($allPunishments as $punishment)
                         <tr class="text-nowrap">
                             <td>{{ $punishment->punishmentType }}</td>
-                            <td><img src="https://crafthead.net/avatar/{{ $punishment->uuid }}/30">
+                            <td><img src="https://mc-heads.net/avatar/{{ $punishment->name }}/30.png">
                                 {{ $punishment->name }}</td>
                             <td>{{ $punishment->reason }}</td>
                             <td><img data-name="{{ $punishment->operator }}"
-                                    src="https://crafthead.net/avatar/8667ba71-b85a-4004-af54-457a9734eed7/30">
+                                    src="https://mc-heads.net/avatar/{{ $punishment->operator }}/30.png">
                                 {{ $punishment->operator }}</td>
                             <td>{{ format_date(Carbon\Carbon::createFromTimestampMs($punishment->start)) }} <span
                                     class="badge bg-info">{{ strftime('%H:%M', $punishment->start / 1000) }}</span></td>
@@ -58,12 +58,14 @@
                                     {{ format_date(Carbon\Carbon::createFromTimestampMs($punishment->end)) }}
                                     <span class="badge bg-info">{{ strftime('%H:%M', $punishment->end / 1000) }}</span>
                                 @else
-                                    N/A
+                                    Jamais
                                 @endif
                             </td>
                             <td class="text-end">
                                 @if ($punishments->contains($punishment) && time() < $punishment->end / 1000)
                                     {{ trans('advancedban::messages.active') }}
+                                @elseif ($punishments->contains($punishment) && $punishment->end == -1)
+                                    Infini
                                 @else
                                     {{ trans('advancedban::messages.finished') }}
                                 @endif
@@ -91,7 +93,7 @@
                 let name = element.getAttribute('data-name');
                 if (name === null) return;
 
-                element.setAttribute('src', 'https://crafthead.net/avatar/' + name + '/30');
+                element.setAttribute('src', 'https://mc-heads.net/avatar/' + name + '/30');
             });
         })
     </script>
